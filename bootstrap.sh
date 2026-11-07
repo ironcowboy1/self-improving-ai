@@ -34,3 +34,4 @@ python3 ~/self-improving-ai/resource_monitor.py
 python3 ~/self-improving-ai/resource_trend.py
 python3 ~/self-improving-ai/anomaly_check.py
 python3 ~/self-improving-ai/propose_self_mod.py
+python3 ~/self-improving-ai/task_queue.py
