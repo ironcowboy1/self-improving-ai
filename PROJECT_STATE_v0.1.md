@@ -30,3 +30,10 @@ Bootstrap complete. Free-resource inventory produced and saved. Ready to claim f
 
 ## Exact Next Recommended Focus
 Upload remaining project files to the GitHub repo, then attempt Oracle Always Free tenancy.
+
+## Current Runtime Status (2026-11-07)
+- Free A1 instance free-server Running in us-phoenix-1 AD-2
+- Public IP: 129.146.4.146
+- SSH access working from Termux (ed25519 key)
+- System packages updated
+- git, python3, pip installed
