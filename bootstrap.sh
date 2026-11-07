@@ -42,3 +42,6 @@ python3 ~/self-improving-ai/auto_status.py
 python3 ~/self-improving-ai/auto_ideas.py
 python3 ~/self-improving-ai/auto_summary.py
 git pull --no-rebase --no-edit 2>/dev/null
+python3 ~/self-improving-ai/auto_progress.py
+python3 ~/self-improving-ai/auto_health.py
+python3 ~/self-improving-ai/auto_cleanup.py
