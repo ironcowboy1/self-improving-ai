@@ -14,3 +14,6 @@ cd ~/self-improving-ai
 git add status.log bootstrap.log 2>/dev/null
 git commit -m "Hourly status $(date +%Y-%m-%d-%H)" --allow-empty 2>/dev/null
 git push 2>/dev/null
+
+# Run Python status module
+python3 ~/self-improving-ai/status.py
