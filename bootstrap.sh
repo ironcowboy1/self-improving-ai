@@ -23,3 +23,4 @@ python3 ~/self-improving-ai/track_idea.py
 cat status.log | tail -10 > latest_status.md
 python3 ~/self-improving-ai/improve.py
 python3 ~/self-improving-ai/check_approvals.py
+python3 ~/self-improving-ai/act_on_approval.py
