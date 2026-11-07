@@ -27,3 +27,4 @@ python3 ~/self-improving-ai/act_on_approval.py
 python3 ~/self-improving-ai/disk_alert.py
 python3 ~/self-improving-ai/daily_summary.py
 python3 ~/self-improving-ai/self_check.py
+python3 ~/self-improving-ai/propose_code_change.py
