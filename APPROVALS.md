@@ -1,2 +1,2 @@
 # Approvals
-- [ ] Add disk alert if use > 80%
+- [x] Add disk alert if use > 80%
