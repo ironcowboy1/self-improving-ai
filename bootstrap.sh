@@ -17,3 +17,4 @@ git push 2>/dev/null
 
 # Run Python status module
 python3 ~/self-improving-ai/status.py
+python3 ~/self-improving-ai/ideas.py
