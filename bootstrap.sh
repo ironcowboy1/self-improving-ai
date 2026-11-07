@@ -20,3 +20,4 @@ python3 ~/self-improving-ai/status.py
 python3 ~/self-improving-ai/ideas.py
 python3 ~/self-improving-ai/generate_idea.py
 python3 ~/self-improving-ai/track_idea.py
+cat status.log | tail -10 > latest_status.md
