@@ -30,3 +30,4 @@ python3 ~/self-improving-ai/self_check.py
 python3 ~/self-improving-ai/propose_code_change.py
 python3 ~/self-improving-ai/weekly_summary.py
 python3 ~/self-improving-ai/next_proposal.py
+python3 ~/self-improving-ai/resource_monitor.py
