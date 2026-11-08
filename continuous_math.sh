@@ -1,5 +1,10 @@
 #!/bin/bash
+cd /home/opc/self-improving-ai
 while true; do
-  python3 /home/opc/self-improving-ai/math_foundation.py
-  sleep 2
+  python3 math_foundation.py &
+  python3 math_foundation.py &
+  python3 math_foundation.py &
+  python3 math_foundation.py &
+  python3 math_foundation.py &
+  wait
 done

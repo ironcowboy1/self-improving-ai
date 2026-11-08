@@ -36,3 +36,5 @@ save(s)
 line=f"- Math burst: level {s['level']} +{n} problems ({s['correct']}/{s['total']})\n"
 open(LOG,"a").write(line)
 print(line.strip())
+# Log only every 10th cycle to cut I/O
+LOG_EVERY = 10
