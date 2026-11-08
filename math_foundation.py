@@ -24,12 +24,20 @@ def prob(lv):
 s=load(); n=0; st=time.time()
 while ok() and time.time()-st<45:
     e,a=prob(s["level"])
-    try: c = True if s["level"]>=4 else eval(e)==a
+    try:
+        if s["level"]>=4:
+            parts=e.replace("x+","").split("=")
+            aa,bb=int(parts[0]),int(parts[1])
+            c = (bb-aa)==a
+        else:
+            c = eval(e)==a
     except: c=False
     s["total"]+=1
     if c:
         s["correct"]+=1
-        if s["correct"]>=8 and s["level"]<6: s["level"]+=1; s["correct"]=0
+        if s.get("window",0)>=100 and s.get("win_correct",0)/max(1,s.get("window",1))>=0.9 and s["level"]<6: s["level"]+=1; s["window"]=0; s["win_correct"]=0
+s["window"]=s.get("window",0)+1
+if c: s["win_correct"]=s.get("win_correct",0)+1
     n+=1
     if n%15==0: save(s)
 save(s)
