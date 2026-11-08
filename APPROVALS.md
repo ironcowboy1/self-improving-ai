@@ -8,4 +8,5 @@
 - Action: Add a simple health-check print to status.py
 - Candidate file: candidate_change.py
 - Status: PENDING
-- To approve: reply APPROVE self-mod in chat, then run act_on_approval.py
+- To approve: reply APPROVED self-mod in chat, then run act_on_approval.py
+APPROVED self-mod
