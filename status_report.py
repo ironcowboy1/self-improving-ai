@@ -39,6 +39,14 @@ mem_total = int([l for l in meminfo.splitlines() if "MemTotal" in l][0].split()[
 mem_avail = int([l for l in meminfo.splitlines() if "MemAvailable" in l][0].split()[1])
 mem_pct = (1 - mem_avail / mem_total) * 100
 load = float(open("/proc/loadavg").read().split()[0])
+
+uptime_sec = float(open("/proc/uptime").read().split()[0])
+uptime_h = uptime_sec / 3600
+ocpu_used = uptime_h * 2
+gb_used = uptime_h * 12
+ocpu_rem = max(0, 1500 - ocpu_used)
+gb_rem = max(0, 9000 - gb_used)
+lines.append(f"<p><b>Oracle Always Free (A1):</b> 2 OCPU / 12 GB shape | OCPU-hours used {ocpu_used:.0f}/1500 (rem {ocpu_rem:.0f}) | GB-hours used {gb_used:.0f}/9000 (rem {gb_rem:.0f})</p>")
 lines.append(f"<p><b>Resources:</b> disk {disk_pct:.1f}% used, memory {mem_pct:.1f}% used, load {load:.2f}</p>")
 
 mods = list(ROOT.glob("*.py"))
