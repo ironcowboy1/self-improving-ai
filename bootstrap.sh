@@ -46,4 +46,4 @@ python3 ~/self-improving-ai/auto_progress.py
 python3 ~/self-improving-ai/auto_health.py
 python3 ~/self-improving-ai/auto_cleanup.py
 python3 ~/self-improving-ai/capability_report.py
-python3 /home/opc/self-improving-ai/email_send.py "Hourly status \( (date +%Y-%m-%d-%H)" " \)(cat /home/opc/self-improving-ai/latest_status.md 2>/dev/null || echo No status yet)"
+python3 /home/opc/self-improving-ai/email_send.py "Hourly status $(date +%Y-%m-%d-%H)" "$(cat /home/opc/self-improving-ai/latest_status.md 2>/dev/null || echo No status yet)"
