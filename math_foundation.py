@@ -13,8 +13,8 @@ def ok():
     m = open("/proc/meminfo").read()
     mt = int([l for l in m.splitlines() if "MemTotal" in l][0].split()[1])
     ma = int([l for l in m.splitlines() if "MemAvailable" in l][0].split()[1])
-    if (1-ma/mt) > 0.75: return False
-    if float(open("/proc/loadavg").read().split()[0]) > 1.8: return False
+    if (1-ma/mt) > 0.90: return False
+    if float(open("/proc/loadavg").read().split()[0]) > 8.0: return False
     return True
 def prob(lv):
     if lv==1: a,b=random.randint(1,50),random.randint(1,50); return f"{a}+{b}",a+b

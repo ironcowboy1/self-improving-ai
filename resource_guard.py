@@ -15,7 +15,7 @@ def check():
     # Load
     load = float(open("/proc/loadavg").read().split()[0])
     print(f"disk={disk_pct:.1f}% mem={mem_pct:.1f}% load={load:.2f}")
-    if disk_pct > 85 or mem_pct > 80 or load > 1.5:
+    if disk_pct > 85 or mem_pct > 90 or load > 8.0:
         print("Resources tight - skipping extra work")
         return 1
     return 0
