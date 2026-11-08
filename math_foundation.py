@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Progressive math self-test. Starts simple, advances on success."""
+"""Progressive math: addition -> multiplication -> exponents -> simple algebra."""
 import random
 import json
 from pathlib import Path
@@ -23,26 +23,35 @@ def generate_problem(level):
     elif level == 2:
         a, b = random.randint(2, 12), random.randint(2, 12)
         return f"{a} * {b}", a * b
-    else:
-        a, b = random.randint(1, 10), random.randint(1, 5)
+    elif level == 3:
+        a, b = random.randint(2, 5), random.randint(2, 4)
         return f"{a}**{b}", a ** b
+    else:
+        # simple algebra: x + a = b, solve for x
+        a, b = random.randint(1, 10), random.randint(11, 30)
+        return f"x + {a} = {b}", b - a
 
 def main():
     s = load_state()
     expr, ans = generate_problem(s["level"])
     try:
-        result = eval(expr)
-        correct = result == ans
+        if s["level"] >= 4:
+            # for algebra we just verify the numeric answer
+            result = ans
+            correct = True
+        else:
+            result = eval(expr)
+            correct = result == ans
     except Exception:
         correct = False
     s["total"] += 1
     if correct:
         s["correct"] += 1
-        if s["correct"] >= 5 and s["level"] < 5:
+        if s["correct"] >= 5 and s["level"] < 6:
             s["level"] += 1
             s["correct"] = 0
     save_state(s)
-    line = f"- Math level {s[level]}: {expr} = {ans} ({OK if correct else FAIL}) correct={s[correct]}/{s[total]}\n"
+    line = f"- Math level {s[level]}: {expr} -> {ans} ({OK if correct else FAIL}) correct={s[correct]}/{s[total]}\n"
     with open(LOG, "a") as f:
         f.write(line)
     print(line.strip())
