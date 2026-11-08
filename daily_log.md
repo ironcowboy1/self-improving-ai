@@ -541744,3 +541744,7 @@
 - Physics: retained g=9.8 m/s², c=3e8 m/s
 - Language: recognized simple pattern subject-verb-object
 - Peer bus updated
+- Math burst: level 6 +200505 problems (31834917/31834957)
+- Math burst: level 6 +200559 problems (31835436/31835476)
+- Math burst: level 6 +202560 problems (31837452/31837492)
+- Math burst: level 6 +203960 problems (31838822/31838862)
