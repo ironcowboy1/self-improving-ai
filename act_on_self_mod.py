@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Auto-apply safe self-mods after isolated test. Require approval only for high-risk changes."""
+"""Auto-apply safe self-mods after isolated test. Require approval only for high-risk changes.
+Also append a short metrics line to daily_log.md for the daily email."""
 import subprocess
 import tempfile
 import shutil
+import datetime
 from pathlib import Path
 
 ROOT = Path("/home/opc/self-improving-ai")
 CANDIDATE = ROOT / "candidate_change.py"
 STATUS = ROOT / "status.py"
 APPROVALS = ROOT / "APPROVALS.md"
+DAILY_LOG = ROOT / "daily_log.md"
 
 HIGH_RISK_KEYWORDS = ["rm ", "delete", "bootstrap.sh", "smtp_config", "git push", "pip install", "apt ", "curl ", "wget ", "ssh "]
 
@@ -43,6 +46,13 @@ with tempfile.TemporaryDirectory() as tmp:
 with open(STATUS, "a") as f:
     f.write("\n# Self-mod health check applied\n")
 print("Hot-swap applied.")
+
+# Append short metrics/idea line to daily log
+now = datetime.datetime.utcnow().isoformat()
+log_line = f"- {now}: Low-risk self-mod applied. Status OK.\n"
+with open(DAILY_LOG, "a") as f:
+    f.write(log_line)
+print("Appended to daily_log.md")
 
 if high_risk and APPROVALS.exists():
     text = APPROVALS.read_text().replace("APPROVE self-mod", "APPROVED self-mod")
