@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Auto-apply safe self-mods after isolated test. Require approval only for high-risk changes.
-Also append a short metrics line to daily_log.md for the daily email."""
+"""Auto-apply all pure-computation advances. Approval only for system-level changes."""
 import subprocess
 import tempfile
 import shutil
@@ -13,7 +12,7 @@ STATUS = ROOT / "status.py"
 APPROVALS = ROOT / "APPROVALS.md"
 DAILY_LOG = ROOT / "daily_log.md"
 
-HIGH_RISK_KEYWORDS = ["rm ", "delete", "bootstrap.sh", "smtp_config", "git push", "pip install", "apt ", "curl ", "wget ", "ssh "]
+HIGH_RISK_KEYWORDS = ["rm ", "delete", "bootstrap.sh", "smtp_config", "git push", "pip install", "apt ", "curl ", "wget ", "ssh ", "open(", "write("]
 
 def is_high_risk(content: str) -> bool:
     return any(k in content for k in HIGH_RISK_KEYWORDS)
@@ -23,16 +22,18 @@ if not CANDIDATE.exists():
     exit(0)
 
 content = CANDIDATE.read_text()
-high_risk = is_high_risk(content)
+needs_approval = is_high_risk(content)
 
-if high_risk:
+if needs_approval:
     if not APPROVALS.exists() or "APPROVE self-mod" not in APPROVALS.read_text():
-        print("High-risk change requires approval. Waiting.")
+        proposal = f"\n## Proposed system-level change {datetime.datetime.utcnow().isoformat()}\n- Status: PENDING\n- Reason: touches system or external resources\n"
+        with open(APPROVALS, "a") as f:
+            f.write(proposal)
+        print("System-level change requires approval. Proposal written.")
         exit(0)
 else:
-    print("Low-risk change: auto-applying after test.")
+    print("Pure computation advance: auto-applying after test.")
 
-# Isolated test
 with tempfile.TemporaryDirectory() as tmp:
     test_path = Path(tmp) / "test_candidate.py"
     shutil.copy(CANDIDATE, test_path)
@@ -42,19 +43,15 @@ with tempfile.TemporaryDirectory() as tmp:
         exit(1)
     print("Isolated test passed:", result.stdout.strip())
 
-# Hot-swap for the example safe change
 with open(STATUS, "a") as f:
     f.write("\n# Self-mod health check applied\n")
 print("Hot-swap applied.")
 
-# Append short metrics/idea line to daily log
 now = datetime.datetime.utcnow().isoformat()
-log_line = f"- {now}: Low-risk self-mod applied. Status OK.\n"
 with open(DAILY_LOG, "a") as f:
-    f.write(log_line)
-print("Appended to daily_log.md")
+    f.write(f"- {now}: Pure-computation change applied.\n")
 
-if high_risk and APPROVALS.exists():
+if needs_approval and APPROVALS.exists():
     text = APPROVALS.read_text().replace("APPROVE self-mod", "APPROVED self-mod")
     APPROVALS.write_text(text)
-    print("High-risk approval marked complete.")
+    print("Approval marked complete.")
