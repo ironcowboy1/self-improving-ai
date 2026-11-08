@@ -48,3 +48,4 @@ python3 ~/self-improving-ai/auto_cleanup.py
 python3 ~/self-improving-ai/capability_report.py
 python3 /home/opc/self-improving-ai/act_on_self_mod.py
 if [ $(date -u +%H) = 04 ]; then python3 /home/opc/self-improving-ai/email_send.py "Daily summary $(date +%Y-%m-%d)" "$(cat /home/opc/self-improving-ai/daily_log.md 2>/dev/null || echo No daily log yet)\n\n$(cat /home/opc/self-improving-ai/latest_status.md 2>/dev/null)"; fi
+if [ $(date -u +%H) = 04 ]; then python3 /home/opc/self-improving-ai/math_foundation.py; python3 /home/opc/self-improving-ai/code_scaffold.py; python3 /home/opc/self-improving-ai/knowledge_base.py; python3 /home/opc/self-improving-ai/capability_inventory.py; python3 /home/opc/self-improving-ai/peer_bus.py; fi
