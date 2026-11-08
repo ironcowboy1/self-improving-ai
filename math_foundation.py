@@ -22,7 +22,7 @@ def prob(lv):
     if lv==3: a,b=random.randint(2,8),random.randint(2,5); return f"{a}**{b}",a**b
     a,b=random.randint(1,20),random.randint(21,100); return f"x+{a}={b}",b-a
 s=load(); n=0; st=time.time()
-while ok() and time.time()-st<45:
+while ok():
     e,a=prob(s["level"])
     try:
         if s["level"]>=4:
