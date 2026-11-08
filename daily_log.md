@@ -541859,3 +541859,6 @@
 - Math burst: level 6 +218565 problems (37380893/37380933)
 - Math burst: level 6 +217505 problems (37379863/37379903)
 - Math burst: level 6 +219206 problems (37381594/37381634)
+- Math burst: level 6 +286815 problems (37668409/37668449)
+- Math burst: level 6 +283015 problems (37664624/37664664)
+- Math burst: level 6 +279188 problems (37660947/37660987)
