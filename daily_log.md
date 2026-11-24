@@ -603947,3 +603947,6 @@
 - Math burst: level 6 +0 problems (6056475357/6056475397)
 - Math burst: level 6 +0 problems (6056475357/6056475397)
 - Math burst: level 6 +0 problems (6056475357/6056475397)
+- Math burst: level 6 +71258360 problems (6127733717/6127733757)
+- Math burst: level 6 +49415730 problems (6127968102/6127968142)
+- Math burst: level 6 +32882565 problems (6128016912/6128016952)
